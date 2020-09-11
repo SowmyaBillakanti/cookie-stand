@@ -8,8 +8,37 @@
 <body>
     <header>Cookie Stand-Sales</header>
     <a href="index.html"></a>
-
     <table id="sales-table" border="1"></table>
+
+    <!-- <form id="CookieStand-form" onsubmit="event.preventDefault()"> -->
+    <form id="CookieStand-form">
+        <fieldset>
+            <legend>Create a Location</legend>
+            <label>
+                CityName
+                <input name="cityName" id="cityName" type="text" required minlength="2" maxlength="15">
+            </label>
+            <label>
+                Min Per Customer
+                <input name="minPerCust" id="minPerCust" type="number" required min="1" max="10">
+            </label>
+            <label>
+                Max Per Customer
+                <input name="maxPerCust" id="maxPerCust" type="number" required min="2" max="20">
+            </label>
+            <label>
+                Avg Cookies Per Customer
+                <input name="avgCookiesPerCust" id="avgCookiesPerCust" type="number" required min="1" max="20">
+            </label>
+            <label>
+                Cookies Sold Per Hour
+                <input name="cookiesSoldPerHour" id="cookiesSoldPerHour" type="number" required min="1" max="50">
+            </label>
+            <button>
+                Submit
+            </button>
+        </fieldset>
+    </form>
 
     <footer>
         <script src="js/app.js"></script>

@@ -1,26 +1,49 @@
 'use strict'
 
+// Global variables
 var salesHours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
 
-var totalCookiesThisHour = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+var totalCookiesThisHour = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]
+
 
 var tableElement = document.getElementById('sales-table');
 
-function Store (cityName, minPerCust, maxPerCust, avgCookiesPerCust, cookiesSoldPerHour) {
+var formElement = document.getElementById('CookieStand-form');
+
+formElement.addEventListener('submit', function (event) {
+    // alert('Submitted');
+    event.preventDefault();
+
+    deleteFooter()
+
+    var cityName = event.target.cityName.value
+    var minPerCust = event.target.minPerCust.value
+    var maxPerCust = event.target.maxPerCust.value
+    var avgCookiesPerCust = event.target.avgCookiesPerCust.value
+    var cookiesSoldPerHour = event.target.cookiesSoldPerHour.value
+
+    var cityStore = new Store(cityName, minPerCust, maxPerCust, avgCookiesPerCust, cookiesSoldPerHour);
+    cityStore.render()
+    
+    createFooter()
+})
+
+// Functions
+function Store(cityName, minPerCust, maxPerCust, avgCookiesPerCust, cookiesSoldPerHour) {
     this.cityName = cityName;
     this.minPerCust = minPerCust;
     this.maxPerCust = maxPerCust;
     this.avgCookiesPerCust = avgCookiesPerCust;
     this.cookiesSoldPerHour = cookiesSoldPerHour;
     this.totalNumOfCookiesPerHour = function () {
-    return Math.floor(Math.random() * (this.maxPerCust - this.minPerCust + 1)) + this.minPerCust;
+        return Math.floor(Math.random() * (this.maxPerCust - this.minPerCust + 1)) + this.minPerCust;
     }
 }
 
 Store.prototype.render = function () {
     // create row for city
     var rowElement = document.createElement('tr');
-    document.getElementById('sales-table').appendChild(rowElement)
+    tableElement.appendChild(rowElement)
 
     // create first cell for city
     var firstCellElement = document.createElement('td');
@@ -30,7 +53,7 @@ Store.prototype.render = function () {
     // calculate cookies for every hour
     var totalNumOfCookiesForCity = 0;
     for (var i = 0; i < salesHours.length; i++) {
-        
+
         // calculate cookies for this hour
         var cellElement = document.createElement('td');
         var cookiesThisHour = Math.round(this.totalNumOfCookiesPerHour(this.minPerCust, this.maxPerCust) * this.avgCookiesPerCust);
@@ -97,14 +120,18 @@ function createFooter() {
     footerRowElement.appendChild(lastFooterCellElement)
 }
 
+function deleteFooter() {
+    tableElement.deleteRow(-1)
+}
+
 // Actual execution
 createHeader()
 
-var Seattle = new Store ('Seattle', 23, 65, 6.3, []);
-var Tokyo = new Store ('Tokyo', 3, 24, 1.2, []);
-var Dubai = new Store ('Dubai', 11, 38, 3.7, []);
-var Paris = new Store ('Paris', 20, 38, 2.3, []);
-var Lima = new Store ('Lima', 2, 16, 4.6, []);
+var Seattle = new Store('Seattle', 23, 65, 6.3, []);
+var Tokyo = new Store('Tokyo', 3, 24, 1.2, []);
+var Dubai = new Store('Dubai', 11, 38, 3.7, []);
+var Paris = new Store('Paris', 20, 38, 2.3, []);
+var Lima = new Store('Lima', 2, 16, 4.6, []);
 
 Seattle.render();
 Tokyo.render();
