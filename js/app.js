@@ -44,6 +44,7 @@ Store.prototype.render = function () {
     // create row for city
     var rowElement = document.createElement('tr');
     tableElement.appendChild(rowElement)
+    rowElement.setAttribute("class", "cities");
 
     // create first cell for city
     var firstCellElement = document.createElement('td');
@@ -56,6 +57,7 @@ Store.prototype.render = function () {
 
         // calculate cookies for this hour
         var cellElement = document.createElement('td');
+        cellElement.setAttribute("class", "cookies-sold-data")
         var cookiesThisHour = Math.round(this.totalNumOfCookiesPerHour(this.minPerCust, this.maxPerCust) * this.avgCookiesPerCust);
         cellElement.textContent = cookiesThisHour;
         rowElement.appendChild(cellElement);
@@ -69,6 +71,7 @@ Store.prototype.render = function () {
     var total = document.createElement('td');
     total.textContent = totalNumOfCookiesForCity;
     rowElement.appendChild(total);
+    total.setAttribute("class", "total-location")
 }
 
 function createHeader() {
@@ -86,6 +89,7 @@ function createHeader() {
         headerCellElement.textContent = salesHours[j]
         headerCellElement.style.fontWeight = 'bold'
         headerRowElement.appendChild(headerCellElement)
+        headerCellElement.setAttribute("class", "hours");
     }
 
     // create last cell for header
@@ -98,6 +102,7 @@ function createHeader() {
 function createFooter() {
     // create footer row
     var footerRowElement = document.createElement('tr')
+    footerRowElement.setAttribute("class", "total-cookies")
     tableElement.appendChild(footerRowElement)
 
     // crate first footer cell
@@ -132,6 +137,7 @@ var Tokyo = new Store('Tokyo', 3, 24, 1.2, []);
 var Dubai = new Store('Dubai', 11, 38, 3.7, []);
 var Paris = new Store('Paris', 20, 38, 2.3, []);
 var Lima = new Store('Lima', 2, 16, 4.6, []);
+
 
 Seattle.render();
 Tokyo.render();

@@ -1,0 +1,54 @@
+.cookies-sold-data {
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkgoldenrod;
+}
+
+.total-cookies {
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkred;
+}
+
+.total-location {
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkred;
+}
+
+body {
+    background-color: lightyellow;
+    border: solid thin grey;
+}
+
+header {
+    color: darksalmon;
+    font-weight: bold;
+}
+
+table {
+    background-color: beige;
+    border: solid grey;
+}
+
+#index-background {
+    background-image: url(https://www.rebeccacakesandbakes.com/wp-content/uploads/00344-01_rainbow-angel-fish-cookies-848x565.jpg);
+    img opacity: 0.6;
+    background-size: cover;
+}
+
+#CookieStand-form {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.hours {
+   font-family: Verdana, Geneva, Tahoma, sans-serif; 
+    
+}
+
+.cities {
+    font-family: Verdana, Geneva, Tahoma, sans-serif; 
+}
+
+a {
+    color: darksalmon;
+    font-weight: bold;
+    font-size: large;
+}
